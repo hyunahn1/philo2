@@ -68,6 +68,7 @@ int			print_die(t_philo *philo);
 void		print_sleep(t_philo *philo);
 void		print_eat(t_philo *philo);
 void		*thread_play(void *philo);
+void		exit_thread(t_data *data, t_philo *philo);
 
 long long	set_and_convert_to_milli(void);
 void		ft_usleep(int ms);

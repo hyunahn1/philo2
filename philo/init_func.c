@@ -22,7 +22,7 @@ int	init_thread(t_data *data, t_philo *philo)
 		philo[i].right_fork = philo[(i + 1) % data->n_philo].left_fork;
 		if (pthread_create(&philo[i].thread, NULL,
 				&thread_play, &philo[i]) == -1)
-			return (ft_error("Error\nFailed to create thread\n", data, philo, 2));
+			return (ft_error("Error\nFailed to create thread\n", data, philo, 1));
 	}
 	i = -1;
 	data->t_start = set_and_convert_to_milli();

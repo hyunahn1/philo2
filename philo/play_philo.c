@@ -27,13 +27,12 @@ static int	is_dead(t_philo *philo)
 	return (0);
 }
 
-static int	has_eaten(t_philo philo, int i)
+static int	has_eaten(t_philo philo)
 {
 	if (philo.data->how_eat
-		&& i == philo.data->n_philo - 1
 		&& philo.how_eaten == philo.data->max_eat)
 	{
-		ft_usleep(300);
+		ft_usleep(philo.data->t_eat * 2);
 		return (1);
 	}
 	return (0);
@@ -44,17 +43,19 @@ static void	monitoring(t_data *data, t_philo *philo)
 	int	i;
 
 	while (!data->philo_ready)
-		continue ;
+		;
 	while (!data->t_over)
 	{
 		i = -1;
 		while (++i < data->n_philo)
-			if (is_dead(&philo[i]) || has_eaten(philo[i], i))
+		{
+			if (is_dead(&philo[i]) || has_eaten(philo[i]))
 				data->t_over = 1;
+		}
 	}
 }
 
-static void	exit_thread(t_data *data, t_philo *philo)
+void	exit_thread(t_data *data, t_philo *philo)
 {
 	int	i;
 

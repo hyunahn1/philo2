@@ -22,9 +22,9 @@ long long	set_and_convert_to_milli(void)
 
 void	ft_usleep(int ms)
 {
-	long int	time;
+	long int	start;
 
-	time = set_and_convert_to_milli();
-	while (set_and_convert_to_milli() - time < ms)
-		usleep(ms / 10);
+	start = set_and_convert_to_milli();
+	while ((set_and_convert_to_milli() - start) < ms)
+		usleep(150);
 }

@@ -20,7 +20,7 @@ void	*thread_play(void *philo)
 	while (!p->data->philo_ready)
 		;
 	if (p->philo_id % 2 != 0)
-		ft_usleep(p->data->t_eat / 2);
+		ft_usleep(p->data->t_eat);
 	while (!p->data->t_over)
 	{
 		print_eat(p);

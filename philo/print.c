@@ -17,15 +17,14 @@ int	print_die(t_philo *philo)
 	print(philo, "died");
 	philo->data->t_over = 1;
 	philo->dead_flg = 1;
-	pthread_mutex_unlock(philo->left_fork);
-	pthread_mutex_unlock(philo->right_fork);
 	return (1);
 }
 
 void	print_sleep(t_philo *philo)
 {
-	ft_usleep(philo->data->t_sleep);
+	ft_usleep(philo->data->t_eat);
 	print(philo, "is sleeping");
+	ft_usleep(philo->data->t_sleep);
 	print(philo, "is thinking");
 }
 
@@ -36,7 +35,6 @@ void	print_eat(t_philo *philo)
 	pthread_mutex_lock(philo->right_fork);
 	print(philo, "has taken a fork");
 	philo->last_eat = set_and_convert_to_milli();
-	ft_usleep(philo->data->t_eat);
 	print(philo, "is eating");
 	philo->how_eaten++;
 	pthread_mutex_unlock(philo->left_fork);
